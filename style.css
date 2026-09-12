@@ -1,0 +1,735 @@
+/* =====================================================
+   SAM'S COFFEE HOUSE — STYLESHEET
+   Warm, modern, editorial specialty coffee shop design.
+   Desktop-first (designed for ~1366px). Mobile handled later.
+   ===================================================== */
+
+/* Google Fonts must be imported before any other rule */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* =====================================================
+   1. CSS Variables
+   ===================================================== */
+:root {
+  --cream: #F5F0E8;
+  --dark-brown: #2B2118;
+  --coffee-brown: #5A4030;
+  --warm-brown: #8A654F;
+  --accent: #C87941;
+  --white: #FFFFFF;
+  --muted: #75685E;
+
+  /* Shared layout values used across sections */
+  --container-width: 1200px;
+  --side-padding: max(24px, calc((100% - var(--container-width)) / 2));
+}
+
+/* =====================================================
+   2. Reset / Base Styles
+   ===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1, h2, h3,
+p, ul, ol, li,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--dark-brown);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   3. Typography
+   ===================================================== */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--dark-brown);
+}
+
+h3 {
+  font-size: 1.35rem;
+  color: var(--dark-brown);
+}
+
+p {
+  color: var(--muted);
+}
+
+a {
+  font-family: 'Poppins', sans-serif;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =====================================================
+   4. Layout / Container
+   ===================================================== */
+/* Instead of adding wrapper <div> containers in the HTML,
+   every section gets horizontal padding that automatically
+   centers its content inside a ~1200px area, while the
+   section's own background can still stretch full width. */
+section {
+  padding-block: 120px;
+  padding-inline: var(--side-padding);
+}
+
+/* =====================================================
+   5. Header
+   ===================================================== */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 32px;
+  padding-inline: var(--side-padding);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+}
+
+.logo-icon {
+  font-size: 2.85rem;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.logo-main {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.logo-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--cream);
+  opacity: 0.85;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Contact gets a stronger, button-like treatment */
+.nav-links li:last-child a {
+  background-color: var(--accent);
+  color: var(--white);
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links li:last-child a::after {
+  display: none;
+}
+
+.nav-links li:last-child a:hover {
+  background-color: var(--coffee-brown);
+  color: var(--white);
+}
+
+/* =====================================================
+   6. Hero
+   ===================================================== */
+#home {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  padding-block: 0;
+  color: var(--white);
+}
+
+/* The hero <img> already in the HTML becomes the background:
+   it's stretched to fill the section behind the text content. */
+#home img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Favour the upper part of the photo (the cup/pouring area) instead
+     of a plain center crop, so less of the busy detail gets cut off. */
+  object-position: center 35%;
+  z-index: -2;
+}
+
+/* Dark translucent overlay so text stays readable */
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(43, 33, 24, 0.47);
+  z-index: -1;
+}
+
+/* Soft fade at the very bottom edge so the photo's crop line blends
+   into the page instead of ending in an abrupt cut. A mid dark stop
+   keeps this feeling like a deliberate vignette rather than a flat
+   white wash. */
+#home::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(43, 33, 24, 0.35) 60%,
+    var(--cream) 100%
+  );
+  z-index: -1;
+}
+
+#home .eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+#home h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--white);
+  max-width: 750px;
+  margin-bottom: 28px;
+}
+
+#home > p:not(.eyebrow) {
+  max-width: 520px;
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.9);
+  margin-bottom: 40px;
+}
+
+/* =====================================================
+   7. Services
+   ===================================================== */
+#services h2,
+#services > p {
+  text-align: center;
+}
+
+#services > p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.service-item {
+  background-color: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(43, 33, 24, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-item h3 {
+  margin: 24px 24px 10px;
+}
+
+.service-item p {
+  padding: 0 24px 28px;
+  font-size: 0.95rem;
+}
+
+.service-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 28px rgba(43, 33, 24, 0.14);
+}
+
+.service-item:hover img {
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   8. How We Work
+   ===================================================== */
+#process {
+  background-color: var(--dark-brown);
+  color: var(--cream);
+}
+
+#process h2,
+#process > p {
+  text-align: center;
+  color: var(--white);
+}
+
+#process > p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: rgba(245, 240, 232, 0.75);
+  font-size: 1.05rem;
+}
+
+.process-list {
+  display: flex;
+  margin-top: 72px;
+  gap: 48px;
+}
+
+.process-list li {
+  flex: 1;
+}
+
+.process-list li:not(:last-child) {
+  border-right: 1px solid rgba(245, 240, 232, 0.15);
+  padding-right: 48px;
+}
+
+.step-number {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.process-list h3 {
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.process-list p {
+  color: rgba(245, 240, 232, 0.75);
+  font-size: 0.95rem;
+}
+
+/* =====================================================
+   9. Recent Work
+   ===================================================== */
+#work h2,
+#work > p {
+  text-align: center;
+}
+
+#work > p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.work-list {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: repeat(2, 300px);
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Larger, feature image on the left; two stacked on the right */
+.work-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.work-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.work-item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.work-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Gradient scrim so the caption text stays readable over the photo */
+.work-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(43, 33, 24, 0.85), transparent 60%);
+}
+
+.work-item h3,
+.work-item p {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+  color: var(--white);
+}
+
+.work-item h3 {
+  bottom: 60px;
+}
+
+.work-item p {
+  bottom: 24px;
+  font-size: 0.9rem;
+  color: rgba(245, 240, 232, 0.85);
+}
+
+/* The two smaller cards get a lighter text treatment than the large
+   feature card, so the overlay text sits comfortably in the shorter
+   card instead of feeling oversized and cramped. */
+.work-item:not(:first-child) h3 {
+  bottom: 62px;
+  font-size: 1.05rem;
+}
+
+.work-item:not(:first-child) p {
+  bottom: 20px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  /* Cap the description at two lines instead of letting it wrap
+     further down the card. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.work-item:hover img {
+  transform: scale(1.06);
+}
+
+/* =====================================================
+   10. Contact
+   ===================================================== */
+#contact {
+  background-color: var(--coffee-brown);
+  color: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  row-gap: 24px;
+}
+
+#contact h2 {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--white);
+}
+
+#contact > p {
+  grid-column: 1;
+  grid-row: 2;
+  color: rgba(245, 240, 232, 0.85);
+  font-size: 1.05rem;
+  max-width: 460px;
+}
+
+#contact address {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: start;
+  margin-top: 16px;
+  line-height: 2;
+  color: rgba(245, 240, 232, 0.9);
+}
+
+#contact address::first-line {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+
+#contact address a {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 240, 232, 0.4);
+  text-underline-offset: 2px;
+  transition: color 0.3s ease;
+}
+
+#contact address a:hover {
+  color: var(--accent);
+}
+
+#contact-form {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  background-color: var(--cream);
+  border-radius: 16px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#contact-form label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dark-brown);
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(43, 33, 24, 0.15);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--dark-brown);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 121, 65, 0.18);
+}
+
+#contact-form button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+#form-message {
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+/* Validation feedback: color is reinforced with an icon + a border,
+   so the message isn't communicated by color alone. */
+#form-message.error,
+#form-message.success {
+  margin-top: 4px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+#form-message.error {
+  color: #8A1F1F;
+  background-color: rgba(179, 38, 30, 0.08);
+  border-left: 3px solid #B3261E;
+}
+
+#form-message.error::before {
+  content: "⚠ ";
+}
+
+#form-message.success {
+  color: #1E5631;
+  background-color: rgba(46, 125, 71, 0.08);
+  border-left: 3px solid #2E7D47;
+}
+
+#form-message.success::before {
+  content: "✓ ";
+}
+
+/* =====================================================
+   11. Footer
+   ===================================================== */
+footer {
+  background-color: var(--dark-brown);
+  color: var(--cream);
+  text-align: center;
+  padding: 56px var(--side-padding) 32px;
+}
+
+footer .logo-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+}
+
+footer .logo-sub {
+  display: block;
+  margin-top: 4px;
+  color: var(--warm-brown);
+}
+
+footer > p:nth-child(2) {
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.7);
+  margin: 10px 0 28px;
+}
+
+.footer-links,
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.footer-links a,
+.social-links a {
+  font-size: 0.9rem;
+  color: var(--cream);
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.social-links a:hover {
+  color: var(--accent);
+}
+
+footer > p:last-child {
+  max-width: var(--container-width);
+  margin: 18px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(245, 240, 232, 0.12);
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.5);
+}
+
+/* =====================================================
+   12. Buttons
+   ===================================================== */
+.btn,
+#contact-form button {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  padding: 16px 36px;
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover,
+#contact-form button:hover {
+  background-color: var(--coffee-brown);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(43, 33, 24, 0.25);
+}
+
+/* =====================================================
+   13. Utility / Miscellaneous
+   ===================================================== */
+/* Visible keyboard focus states, kept rather than removed */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

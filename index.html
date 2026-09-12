@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam's Coffee House | Specialty Coffee in Accra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#home" class="logo">
+        <span class="logo-icon" aria-hidden="true">☕</span>
+        <span class="logo-text">
+          <span class="logo-main">SAM'S</span>
+          <span class="logo-sub">COFFEE HOUSE</span>
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How We Work</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. Hero Section -->
+    <section id="home">
+      <p class="eyebrow">SPECIALTY COFFEE • ACCRA</p>
+      <h1>Good Coffee.<br />Good Moments.</h1>
+      <p>
+        Carefully crafted coffee, fresh pastries, and a warm space made for
+        slowing down, connecting, and enjoying the moment.
+      </p>
+      <a href="#services" class="btn">Explore Our Menu</a>
+      <img
+        src="images/hero-coffee.jpg"
+        alt="Freshly prepared specialty coffee at Sam's Coffee House"
+      />
+    </section>
+
+    <!-- 2. Our Services Section -->
+    <section id="services">
+      <h2>Our Services</h2>
+      <p>
+        From carefully crafted coffee to freshly prepared treats, there's
+        something for every coffee lover.
+      </p>
+
+      <div class="service-list">
+        <article class="service-item">
+          <img
+            src="images/specialty-coffee.jpg"
+            alt="Specialty coffee prepared at Sam's Coffee House"
+          />
+          <h3>Specialty Coffee</h3>
+          <p>
+            From rich espresso to smooth lattes, every cup is carefully
+            prepared using quality coffee beans.
+          </p>
+        </article>
+
+        <article class="service-item">
+          <img
+            src="images/pastries.jpg"
+            alt="Fresh pastries served with coffee"
+          />
+          <h3>Fresh Pastries</h3>
+          <p>
+            Enjoy freshly prepared pastries and sweet treats that pair
+            perfectly with your favourite coffee.
+          </p>
+        </article>
+
+        <article class="service-item">
+          <img
+            src="images/private-events.jpg"
+            alt="People enjoying a gathering at a coffee house"
+          />
+          <h3>Private Events</h3>
+          <p>
+            A warm and welcoming space for small gatherings, meetings,
+            celebrations, and special moments.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. How We Work Section -->
+    <section id="process">
+      <h2>How We Work</h2>
+      <p>
+        From choosing your favourite drink to enjoying the final cup, we
+        keep every visit simple and enjoyable.
+      </p>
+
+      <ol class="process-list">
+        <li>
+          <span class="step-number">01</span>
+          <h3>Choose</h3>
+          <p>
+            Explore our coffee and pastry selection and choose what you're
+            in the mood for.
+          </p>
+        </li>
+        <li>
+          <span class="step-number">02</span>
+          <h3>We Prepare</h3>
+          <p>
+            Our baristas carefully prepare your order using quality
+            ingredients and attention to detail.
+          </p>
+        </li>
+        <li>
+          <span class="step-number">03</span>
+          <h3>Enjoy</h3>
+          <p>
+            Sit back, relax, and enjoy your coffee in the Sam's Coffee
+            House atmosphere.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 4. Recent Work Section -->
+    <section id="work">
+      <h2>A Taste of Sam's</h2>
+      <p>A few favourites from our coffee house.</p>
+
+      <div class="work-list">
+        <article class="work-item">
+          <img
+            src="images/signature-latte.jpg"
+            alt="Signature latte with latte art"
+          />
+          <h3>Signature Latte</h3>
+          <p>
+            Smooth espresso finished with creamy milk and delicate latte
+            art.
+          </p>
+        </article>
+
+        <article class="work-item">
+          <img
+            src="images/pastry-collection.jpg"
+            alt="Fresh pastry collection at Sam's Coffee House"
+          />
+          <h3>Fresh Pastry Collection</h3>
+          <p>
+            A selection of freshly prepared pastries made to complement
+            every cup.
+          </p>
+        </article>
+
+        <article class="work-item">
+          <img
+            src="images/coffee-house.jpg"
+            alt="Warm interior of Sam's Coffee House"
+          />
+          <h3>The Sam's Experience</h3>
+          <p>
+            A glimpse of the warm and relaxed atmosphere inside our coffee
+            house.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. Contact Us Section -->
+    <section id="contact">
+      <h2>Let's Have Coffee</h2>
+      <p>
+        Have a question, want to plan a visit, or interested in hosting a
+        small event? We'd love to hear from you.
+      </p>
+
+      <form id="contact-form">
+        <label for="name">Your Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+        />
+
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+        />
+
+        <label for="message">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Write your message..."
+        ></textarea>
+
+        <button type="submit">Send Enquiry</button>
+
+        <p id="form-message" aria-live="polite"></p>
+      </form>
+
+      <!-- Business contact information -->
+      <address>
+        Sam's Coffee House<br />
+        Accra, Ghana<br />
+        Email: <a href="mailto:dadzies154@gmail.com">dadzies154@gmail.com</a><br />
+        Phone: <a href="tel:0557553878">0557553878</a>
+      </address>
+    </section>
+
+  </main>
+
+  <!-- 6. Footer -->
+  <footer>
+    <p class="logo">
+      <span class="logo-main">SAM'S</span>
+      <span class="logo-sub">COFFEE HOUSE</span>
+    </p>
+    <p>"Good coffee. Good moments."</p>
+
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How We Work</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <ul class="social-links">
+      <li><a href="#" aria-label="Sam's Coffee House on Instagram">Instagram</a></li>
+      <li><a href="#" aria-label="Sam's Coffee House on Facebook">Facebook</a></li>
+    </ul>
+
+    <p>&copy; 2026 Sam's Coffee House. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
