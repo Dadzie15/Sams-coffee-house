@@ -12,11 +12,29 @@ const formMessage = document.getElementById('form-message');
 // (not perfect, but good enough to catch obvious mistakes).
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Keeps track of the pending "auto-hide" timer for the success
+// message, so a new submission can cancel an old timer before
+// starting a fresh one (otherwise two timers could conflict).
+let hideMessageTimeoutId;
+
 // Shows feedback text inside #form-message and marks it as an
 // error or a success so it can be styled (and read out) correctly.
 function showFormMessage(text, type) {
+  // Cancel any auto-hide timer left over from an earlier message,
+  // so it can't clear this new message out from under the user.
+  clearTimeout(hideMessageTimeoutId);
+
   formMessage.textContent = text;
   formMessage.className = type; // "error" or "success"
+
+  // Only the success message auto-hides; error messages stay
+  // visible until the user fixes the form and submits again.
+  if (type === 'success') {
+    hideMessageTimeoutId = setTimeout(function () {
+      formMessage.textContent = '';
+      formMessage.className = '';
+    }, 5000);
+  }
 }
 
 // Run all validation whenever the form is submitted.

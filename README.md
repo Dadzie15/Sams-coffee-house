@@ -207,8 +207,13 @@ Alternatively, the project can be served with any simple local development serve
 
 ## Screenshots
 
-- Full desktop page screenshot — *to be added*
-- Contact form validation screenshot — *to be added*
+**Full Website** — Complete desktop view of Sam's Coffee House landing page.
+
+![Full desktop view of the Sam's Coffee House landing page](screenshots/full-page.png)
+
+**Contact Form Validation** — Demonstration of the JavaScript form validation and success message.
+
+![Contact form showing JavaScript validation feedback](screenshots/contact-form-validation.png)
 
 ## Submission Links
 
