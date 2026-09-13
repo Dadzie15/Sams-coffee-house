@@ -720,3 +720,219 @@ button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* =====================================================
+   14. Responsive / Mobile
+   Everything below this line only adjusts the existing desktop
+   styles above for tablet and phone widths. Nothing above this
+   section was changed — screens wider than 768px still render
+   exactly as they did before.
+   ===================================================== */
+
+/* The hamburger button is hidden by default (desktop) and only
+   revealed inside the tablet media query below. */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ---------- Tablet: 768px and narrower ---------- */
+@media (max-width: 768px) {
+  /* --- Navigation: switch to a hamburger + dropdown menu --- */
+  header nav {
+    position: relative;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background-color: var(--dark-brown);
+    padding: 8px 24px 24px;
+  }
+
+  /* Toggled by script.js when the hamburger button is tapped */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+  }
+
+  /* Keep the Contact link's stronger pill treatment instead of
+     letting it stretch full-width like the plain links above it */
+  .nav-links li:last-child a {
+    display: inline-block;
+    width: auto;
+    margin-top: 8px;
+  }
+
+  /* --- General section spacing --- */
+  section {
+    padding-block: 72px;
+  }
+
+  /* --- Hero --- */
+  #home h1 {
+    font-size: clamp(2.4rem, 7vw, 3.5rem);
+  }
+
+  /* --- Our Services: stack the three cards --- */
+  .service-list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* --- How We Work: stack the three steps --- */
+  .process-list {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .process-list li:not(:last-child) {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.15);
+    padding-bottom: 40px;
+  }
+
+  /* --- Recent Work: stack the cards, same size for all three --- */
+  .work-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 20px;
+  }
+
+  .work-item,
+  .work-item:nth-child(1),
+  .work-item:nth-child(2),
+  .work-item:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+    height: 280px;
+  }
+
+  .work-item h3,
+  .work-item:not(:first-child) h3 {
+    font-size: 1.15rem;
+    bottom: 56px;
+  }
+
+  .work-item p,
+  .work-item:not(:first-child) p {
+    font-size: 0.85rem;
+    bottom: 20px;
+  }
+
+  /* --- Contact: single column, form below the business info --- */
+  #contact {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 32px;
+  }
+
+  #contact h2 {
+    grid-row: auto;
+    order: 1;
+  }
+
+  #contact > p {
+    grid-row: auto;
+    order: 2;
+    max-width: 100%;
+  }
+
+  #contact address {
+    grid-row: auto;
+    order: 3;
+  }
+
+  #contact-form {
+    grid-column: 1;
+    grid-row: auto;
+    order: 4;
+    padding: 32px 24px;
+  }
+
+  #contact-form button {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* --- Footer: let the link rows wrap instead of overflowing --- */
+  .footer-links,
+  .social-links {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+}
+
+/* ---------- Mobile: 480px and narrower ---------- */
+@media (max-width: 480px) {
+  section {
+    padding-block: 56px;
+  }
+
+  #services {
+    padding-top: 48px;
+  }
+
+  /* --- Hero --- */
+  #home h1 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  #home > p:not(.eyebrow) {
+    font-size: 0.95rem;
+  }
+
+  .btn,
+  #contact-form button {
+    padding: 14px 28px;
+  }
+
+  /* --- Recent Work: a little shorter on the smallest phones --- */
+  .work-item,
+  .work-item:nth-child(1),
+  .work-item:nth-child(2),
+  .work-item:nth-child(3) {
+    height: 240px;
+  }
+
+  /* --- Contact --- */
+  #contact-form {
+    padding: 24px 20px;
+  }
+
+  /* --- Footer --- */
+  footer {
+    padding: 40px var(--side-padding) 24px;
+  }
+
+  .footer-links,
+  .social-links {
+    gap: 16px;
+  }
+}

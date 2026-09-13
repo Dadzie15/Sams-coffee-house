@@ -81,3 +81,29 @@ contactForm.addEventListener('submit', function (event) {
   // Clear the fields so the form is ready for another entry.
   contactForm.reset();
 });
+
+// ---------------------------------------------------------
+// Mobile navigation menu (hamburger toggle)
+// Only matters on smaller screens — on desktop the toggle button
+// is hidden by CSS and the nav links are always visible.
+// ---------------------------------------------------------
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.textContent = isOpen ? '✕' : '☰';
+  });
+
+  // Close the menu once a link is tapped, so it doesn't stay open
+  // after the page jumps to the chosen section.
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.textContent = '☰';
+    });
+  });
+}
